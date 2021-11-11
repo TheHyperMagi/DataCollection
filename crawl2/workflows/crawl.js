@@ -14,22 +14,22 @@ Apify.main(async()=>{
     const crawler = new Apify.CheerioCrawler({
         requestList,
         //function called for each url
-        handlePageFunction: async ({request,response, content, $}) => {
-            $('.row').each((index, el) =>{
+        handlePageFunction: async ({request,response, $}) => {
+            $('.row div').each((index, el) =>{
                 const orgList = [];
                 //reduce the set of matched elements to the one at the specified index
-                href = $(el).find('a:eq(0)').attr('href');
-                title = $(el).find('a:eq(0)').text();
-                requestQueue.addRequest({url: href});
-                $('.col-12 col-lg-9 order-1 order-lg-1').each((index,el) =>{
-                    org_href = $(el).find('a:eq(0)').attr('href');
-                    org_title = $(el).find('a:eq(0)').text();
-                    org_content = $(el).find('a:eq(0)').content();
-
-                    orgList.push(org_href, org_title, org_content);
+                href = $(el).find('.icon-box').attr('href');
+                title = $(el).find('.entry-title').text();
+                
+                handlePageFunction: async ({request,response, content, $}) => {
+                    $('.left-area div').each((index, el) =>{
+                        org_href = $(el).find('.entry-title2').attr('href');
+                        org_title = $(el).find('.entry-title2').text();
+                        org_content = $(el).find('.content').text(); 
+                        orgList.push([org_href, org_title, org_content]);
+                    });
+                    dataJson.push([href, title, orgList]);
                 });
-                dataJson.push([href, title, orgList]);
-            });
             //store data to default dataset
             await Apify.pushData({dataJson});
         },
