@@ -21,15 +21,17 @@ Apify.main(async()=>{
                 href = $(el).find('.icon-box').attr('href');
                 title = $(el).find('.entry-title').text();
                 
-                handlePageFunction: async ({request,response, content, $}) => {
+                /*handlePageFunction: async ({request,response, content, $}) => {
                     $('.left-area div').each((index, el) =>{
                         org_href = $(el).find('.entry-title2').attr('href');
                         org_title = $(el).find('.entry-title2').text();
                         org_content = $(el).find('.content').text(); 
                         orgList.push([org_href, org_title, org_content]);
                     });
-                    dataJson.push([href, title, orgList]);
-                });
+                    
+                });*/
+                dataJson.push([href, title]);
+            });
             //store data to default dataset
             await Apify.pushData({dataJson});
         },
