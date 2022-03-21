@@ -1,4 +1,4 @@
-navigate to this folder using cmd: cd (path) or just open one with shift+cmd
+navigate to this folder using cmd: cd (path) or just open one with shift+right click+terminal
 
 use `npm install` to install the dependencies
 
