@@ -3,6 +3,7 @@ import Apify from 'apify';
 import cheerio from 'cheerio';
 import { parse } from 'json2csv';
 import { writeFileSync } from 'fs';
+import {scrawler_content} from './shamil_scrawl.js';
 
 const orgList = [];
 const newitems = [];
@@ -92,9 +93,13 @@ items.filter(function (el) {
     }
 });
 
-//convert to json file
+/*/convert to json file
 const json = JSON.stringify(newitems);
 
 writeFileSync('trial01.json', json);
+*/
+
 //to show that empty elements have been removed or filtered
 console.log('New Length in dataset: ', newitems.length);
+
+scrawler_content(newitems);
