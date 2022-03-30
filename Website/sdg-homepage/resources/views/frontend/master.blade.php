@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" type="image/png" href="{{url('frontend')}}/img/favicon.png">
-    <title>BOP Hub</title>
+    <title>@yield('title')</title>
 
     <link rel="stylesheet" type="text/css" href="{{url('frontend')}}/vendor/slick/slick.min.css" />
     <link rel="stylesheet" type="text/css" href="{{url('frontend')}}/vendor/slick/slick-theme.min.css" />
@@ -19,6 +19,8 @@
     <link href="{{url('frontend')}}/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <link href="{{url('frontend')}}/css/style.css" rel="stylesheet">
+    <link href="{{url('frontend')}}/css/font-awesome.min.css" rel="stylesheet">
+    <link href="{{url('frontend')}}/css/font-awesome.css" rel="stylesheet">
 </head>
 
 <body>
@@ -59,7 +61,7 @@
                 </form>
                 @elseif(Auth::user()->type === 'EMP')
                 <li class="nav-item">
-                    <a href="{{url('employee-dashboard', Auth::user()->name)}}" class="btn btn-primary"> <i class="feather-plus"></i> Visit Dashboard </a>
+                    <a href="{{url('dashboard', Auth::user()->name)}}" class="btn btn-primary"> <i class="feather-plus"></i> Visit Dashboard </a>
                 </li>&nbsp;&nbsp;
                 <li class="nav-item"><a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="btn btn-primary"><i class="icon-material-outline-power-settings-new"></i> Logout</a></li>
                 <form action="{{route('logout')}}" method="POST" id="logout-form">
@@ -67,7 +69,7 @@
                 </form>
                 @else
                 <li class="nav-item">
-                    <a href="{{url('candidate-dashboard', Auth::user()->name)}}" class="btn btn-primary"> <i class="feather-plus"></i> Visit Dashboard </a>
+                    <a href="{{url('dashboard', Auth::user()->name)}}" class="btn btn-primary"> <i class="feather-plus"></i> Visit Dashboard </a>
                 </li>&nbsp;&nbsp;
                 <li class="nav-item"><a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="btn btn-primary"><i class="icon-material-outline-power-settings-new"></i> Logout</a></li>
                 <form action="{{route('logout')}}" method="POST" id="logout-form">
@@ -87,13 +89,13 @@
 
 
                 <li class="nav-item dropdown no-arrow mx-1 osahan-list-dropdown">
-                    <a class="nav-link" href="https://www.facebook.com/squarespace">
+                    <a class="nav-link" target="_blank" href="https://www.facebook.com/squarespace">
                         <i class="feather-facebook"></i>&nbsp;&nbsp;
                     </a>
-                    <a class="nav-link" href="https://www.linkedin.com/company/squarespace/">
+                    <a class="nav-link" target="_blank" href="https://www.linkedin.com/company/squarespace/">
                         <i class="feather-linkedin"></i>&nbsp;&nbsp;
                     </a>
-                    <a class="nav-link" href="https://www.instagram.com/bop_hub/">
+                    <a class="nav-link" target="_blank" href="https://www.instagram.com/bop_hub/">
                         <i class="feather-instagram"></i>&nbsp;&nbsp;
                     </a>
 
@@ -102,8 +104,13 @@
             </ul>
         </div>
     </nav>
+    <style>
+        .profile-cover {
+            margin: 75px 15px;
+        }
+    </style>
     <div class="profile-cover text-center">
-        <img class="img-fluid" src="{{url('frontend')}}/img/SDG-logo-horizontal.png" width="85%" alt="">
+        <img class="img-fluid" src="{{url('frontend')}}/img/SDG-banner.png" width="85%" alt="">
     </div>
     <style>
         .bg-white {
@@ -152,7 +159,7 @@
                                 <a class="navbar-brand" href="#">Feel More</a>
                                 <a class="navbar-brand" href="#">Do More</a>
                                 <a class="navbar-brand" href="#">Collaborate More</a>
-                                <a class="navbar-brand" href="#">BOP Hub</a>
+                                <a class="navbar-brand" href="">BOP Hub</a>
                                 <a class="navbar-brand" href="#">Events</a>
                                 <a class="navbar-brand" href="#">Contact Us</a>
                             </nav>
@@ -170,10 +177,24 @@
 
 
     @yield('content')
+    <style>
+        .myfootercss {
+            background-color: #1d2f38;
+            color: #fff;
+            padding: 0px 0px;
+        }
 
+        h5 {
+            font-size: 20px;
+        }
+
+        .text-muted {
+            color: #ffffff !important;
+        }
+    </style>
     <!-- footer section -->
-    <div class="mt-4" style="background-color: #edeae5;">
-        <footer class="container py-5">
+    <div class="mt-4 myfootercss">
+        <footer class="container" style="padding-top: 40px;">
             <div class="row">
                 <div class="col-md-2">
                     <h5>BOP Hub Limited</h5>
@@ -191,15 +212,15 @@
                         <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Feel More</a></li>
                         <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Do More</a></li>
                         <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Collaborate More</a></li>
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">SDG Goals</a></li>
+                        <li class="nav-item mb-2"><a href="{{url('/')}}" class="nav-link p-0 text-muted">SDG Goals</a></li>
                     </ul>
                 </div>
 
                 <div class="col-md-4">
                     <h5>Important Link</h5>
                     <ul class="nav flex-column">
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Login</a></li>
-                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Register</a></li>
+                        <li class="nav-item mb-2"><a href="{{route('login')}}" class="nav-link p-0 text-muted">Login</a></li>
+                        <li class="nav-item mb-2"><a href="{{route('register')}}" class="nav-link p-0 text-muted">Register</a></li>
                         <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
                         <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
                     </ul>
@@ -210,7 +231,7 @@
                         <h5>Subscribe to our newsletter</h5>
                         <p>Monthly digest of whats new and exciting from us.</p>
                         <div class="d-flex w-100 gap-2">
-                            <label for="newsletter1" class="visually-hidden">Email address</label>
+                            <!--label for="newsletter1" class="visually-hidden">Email address</!--label-->
                             <input id="newsletter1" type="text" class="form-control" placeholder="Email address">
                             <button class="btn btn-primary" type="button">Subscribe</button>
                         </div>
@@ -220,11 +241,7 @@
 
             <div class="d-flex justify-content-between py-4 my-4 border-top border-dark">
                 <p> &copy; 2021 BOP Hub Limited. All rights reserved.</p>
-                <ul class="list-unstyled d-flex">
-                    <li class="ms-3"><a class="link-dark h4" href="#"><i class="bi bi-linkedin"></i></a></li>
-                    <li class="ms-3"><a class="link-dark h4" href="#"><i class="bi bi-facebook"></i></a></li>
-                    <li class="ms-3"><a class="link-dark h4" href="#"><i class="bi bi-instagram"></i></a></li>
-                </ul>
+
             </div>
         </footer>
     </div>

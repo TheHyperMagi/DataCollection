@@ -1,5 +1,9 @@
 @extends('backend.master')
 
+@section('view-goal')
+active
+@endsection
+
 @section('content')
 <div class="content-page">
     <div class="container-fluid">
@@ -33,7 +37,7 @@
                                     <td><img src="{{asset('thumbnails/'.$item->image)}}" width="95px" alt="{{$item->title}}"></td>
                                     <td>
                                         <a href="{{url('edit-category', $item->slug)}}" class="btn bg-info">Edit</a>
-                                        <a href="{{url('delete-category', $item->slug)}}" class="btn bg-danger">Delete</a>
+                                        <!--a href="{{url('delete-category', $item->slug)}}" class="btn bg-danger">Delete</a>
                                     </td>
                                 </tr>
                                 @endforeach

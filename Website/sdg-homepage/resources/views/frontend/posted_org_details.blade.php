@@ -9,9 +9,6 @@ Overview of {{$org->org_name}}
     .mynav {
         padding: 60px 0px;
     }
-    .profile-cover {
-        display: none;
-    }
 </style>
 <div class="container">
     <main class="col col-xl-12 order-xl-2 col-lg-12 order-lg-1 col-md-12 col-sm-12 col-12 mynav">

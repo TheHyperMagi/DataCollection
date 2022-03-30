@@ -1,5 +1,7 @@
 @extends('frontend.master')
-
+@section('title')
+Organizations
+@endsection
 @section('content')
 <style>
     .mynav {
@@ -17,6 +19,20 @@
                 <div class="d-flex align-items-top job-item-header pb-2">
                     <div class="mr-2">
                         <h6 class="font-weight-bold text-dark mb-0"><a href="{{url('org-details', $item->org_name)}}" style="color: #000;">{{$item->org_name}}</a></h6>
+                        <div class="text-truncate text-primary">{{$item->org_type}}</div>
+                        <div class="small text-gray-500">{{$item->industry}}</div>
+                    </div>
+
+                </div>
+                <p class="mb-0">{{ \Illuminate\Support\Str::limit($item->goal_relevance, 120, $end='...') }}</p>
+            </div>
+            @endforeach
+
+            @foreach($user_posted as $item)
+            <div class="box-body p-3 border-bottom">
+                <div class="d-flex align-items-top job-item-header pb-2">
+                    <div class="mr-2">
+                        <h6 class="font-weight-bold text-dark mb-0"><a href="{{url('user-posted', $item->org_name)}}" style="color: #000;">{{$item->org_name}}</a></h6>
                         <div class="text-truncate text-primary">{{$item->org_type}}</div>
                         <div class="small text-gray-500">{{$item->industry}}</div>
                     </div>

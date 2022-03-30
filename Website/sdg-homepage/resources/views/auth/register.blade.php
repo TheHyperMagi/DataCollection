@@ -27,12 +27,19 @@
             <div class="row justify-content-center align-items-center d-flex vh-100">
                 <div class="col-md-4 mx-auto">
                     <div class="osahan-login py-4">
+                        <x-jet-validation-errors class="mb-44" />
+                        @if (session('success'))
+                        <div class="mb-4 font-medium text-sm text-green">
+                            {{ session('success') }}
+                        </div>
+                        @endif
                         <div class="text-center mb-4">
                             <h5 class="font-weight-bold mt-3">Sign-Up to BOP Hub</h5>
                             <p class="text-muted">Make the most of your professional life</p>
                         </div>
-                        <form action="{{ route('register') }}" method="POST">
+                        <form action="{{ url('user-register') }}" method="POST">
                             @csrf
+
                             <div class="form-row">
                                 <div class="col">
                                     <div class="form-group">
@@ -52,7 +59,7 @@
                                         <label class="mb-1">Full Name</label>
                                         <div class="position-relative icon-form-control">
                                             <i class="feather-user position-absolute"></i>
-                                            <input type="text" name="name" class="form-control" :value="old('name')" required autofocus autocomplete="name">
+                                            <input type="text" name="name" class="form-control" :value="old('name')" autofocus autocomplete="name">
                                         </div>
                                     </div>
                                 </div>
@@ -61,43 +68,30 @@
                                 <label class="mb-1">Email</label>
                                 <div class="position-relative icon-form-control">
                                     <i class="feather-at-sign position-absolute"></i>
-                                    <input type="email" name="email" class="form-control" :value="old('email')" required>
+                                    <input type="email" name="email" class="form-control" :value="old('email')" >
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="mb-1">Password (6 or more characters)</label>
                                 <div class="position-relative icon-form-control">
                                     <i class="feather-unlock position-absolute"></i>
-                                    <input type="password" name="password" class="form-control" required autocomplete="new-password">
+                                    <input type="password" name="password" class="form-control" autocomplete="new-password" required>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="mb-1">Confirm Password</label>
                                 <div class="position-relative icon-form-control">
                                     <i class="feather-unlock position-absolute"></i>
-                                    <input type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                    <input type="password" class="form-control" name="password_confirmation" autocomplete="new-password" required>
                                 </div>
                             </div>
 
                             <button class="btn btn-primary btn-block text-uppercase" type="submit"> Agree & Join </button>
                         </form>
-                        <div class="text-center mt-3 border-bottom pb-3">
-                            <p class="small text-muted">Or login with</p>
-                            <div class="row">
-                                <div class="col-4">
-                                    <button type="button" class="btn btn-sm btn-outline-instagram btn-block"><i class="feather-instagram"></i> Instagram</button>
-                                </div>
-                                <div class="col-4">
-                                    <button type="button" class="btn btn-sm btn-outline-linkedin btn-block"><i class="feather-linkedin"></i> Linkedin</button>
-                                </div>
-                                <div class="col-4">
-                                    <button type="button" class="btn btn-sm btn-outline-facebook btn-block"><i class="feather-facebook"></i> Facebook</button>
-                                </div>
-                            </div>
-                        </div>
+
                         <div class="py-3 d-flex align-item-center">
-                            <a href="forgot-password.html">Forgot password?</a>
-                            <span class="ml-auto"> Already Sign-up? <a class="font-weight-bold" href="sign-in.html">Sign in</a></span>
+                            <a href="{{route('password.request')}}">Forgot password?</a>
+                            <span class="ml-auto"> Already Sign-up? <a class="font-weight-bold" href="{{url('login')}}">Sign in</a></span>
                         </div>
 
                     </div>

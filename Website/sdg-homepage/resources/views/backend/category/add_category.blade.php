@@ -1,5 +1,9 @@
 @extends('backend.master')
 
+@section('add-goal')
+active
+@endsection
+
 @section('content')
 <div class="content-page">
     <div class="container-fluid">
@@ -16,7 +20,7 @@
                         <div class="header-title">
                             <h4 class="card-title">Add Goals</h4>
                         </div>
-                        
+
                     </div>
                     <div class="card-body">
 

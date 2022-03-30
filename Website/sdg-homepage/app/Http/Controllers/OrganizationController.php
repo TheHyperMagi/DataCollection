@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AddOrgs;
 use App\Models\Category;
 use App\Models\Organization;
 use Carbon\Carbon;
@@ -65,7 +66,7 @@ class OrganizationController extends Controller
 
     function UpdateOrganizations(Request $request){
         $id = $request->id;
-        Organization::where('id', $id)->update([
+        AddOrgs::where('id', $id)->update([
             'goal_id' => $request->goal_id,
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,

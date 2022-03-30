@@ -22,11 +22,37 @@
 </head>
 
 <body>
+    <style>
+        .text-green {
+            background: green;
+            color: white;
+            padding: 15px 100px;
+        }
+
+        .mb-44 {
+            background: #ff0000ba;
+            padding: 12px 10px;
+            color: #fff;
+        }
+
+        .message {
+            padding: 11px 11px;
+            background: red;
+            color: #fff;
+        }
+    </style>
     <div class="bg-white">
         <div class="container">
             <div class="row justify-content-center align-items-center d-flex vh-100">
+
                 <div class="col-md-4 mx-auto">
                     <div class="osahan-login py-4">
+                        <x-jet-validation-errors class="mb-44 message"/>
+                        @if (session('success'))
+                        <div class="mb-4 font-medium text-sm text-green">
+                            {{ session('success') }}
+                        </div>
+                        @endif
                         <div class="text-center mb-4">
                             <h5 class="font-weight-bold mt-3">Sign-In to BOP Hub</h5>
                         </div>
@@ -37,14 +63,14 @@
                                 <label class="mb-1">Email</label>
                                 <div class="position-relative icon-form-control">
                                     <i class="feather-at-sign position-absolute"></i>
-                                    <input type="email" name="email" class="form-control" :value="old('email')" required>
+                                    <input type="email" name="email" class="form-control" :value="old('email')">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="mb-1">Password </label>
                                 <div class="position-relative icon-form-control">
                                     <i class="feather-unlock position-absolute"></i>
-                                    <input type="password" name="password" class="form-control" required autocomplete="current-password">
+                                    <input type="password" name="password" class="form-control" autocomplete="current-password">
                                 </div>
                             </div>
 
@@ -52,7 +78,7 @@
                         </form>
 
                         <div class="py-3 d-flex align-item-center">
-                            <a href="forgot-password.html">Forgot password?</a>
+                            <a href="{{route('password.request')}}">Forgot password?</a>
                             <span class="ml-auto"> No a Registered User? <a class="font-weight-bold" href="{{url('register')}}">Sign Up</a></span>
                         </div>
 

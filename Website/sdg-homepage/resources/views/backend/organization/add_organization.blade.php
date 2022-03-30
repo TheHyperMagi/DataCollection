@@ -1,5 +1,9 @@
 @extends('backend.master')
 
+@section('add-org')
+active
+@endsection
+
 @section('content')
 <div class="content-page">
     <div class="container-fluid">

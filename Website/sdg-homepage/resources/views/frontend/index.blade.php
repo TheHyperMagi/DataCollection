@@ -1,5 +1,9 @@
 @extends('frontend.master')
 
+@section('title')
+    SDG Goals 
+@endsection
+
 @section('content')
     <div class="py-5">
         <div class="container">

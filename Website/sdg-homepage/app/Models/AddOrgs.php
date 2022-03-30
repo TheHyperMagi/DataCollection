@@ -5,13 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Organization extends Model
+class AddOrgs extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'goal_id',
-        'first_name',
+        'user_id',
+        'post_type',
         'last_name',
         'org_name',
         'org_type',

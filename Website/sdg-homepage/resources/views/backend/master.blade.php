@@ -26,10 +26,10 @@
     <div class="wrapper">
         <div class="iq-sidebar  sidebar-default  ">
             <div class="iq-sidebar-logo d-flex align-items-end justify-content-between">
-                <a href="index.html" class="header-logo">
+                <a href="{{url('/')}}" class="header-logo">
                     <img src="{{url('backend')}}/assets/images/logo.png" class="img-fluid rounded-normal light-logo" alt="logo">
                     <img src="{{url('backend')}}/assets/images/logo-dark.png" class="img-fluid rounded-normal d-none sidebar-light-img" alt="logo">
-                    <span>Datum</span>
+                    <span>SDG Goals</span>
                 </a>
                 <div class="side-menu-bt-sidebar-1">
                     <svg xmlns="http://www.w3.org/2000/svg" class="text-light wrapper-menu" width="30" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -40,8 +40,8 @@
             <div class="data-scrollbar" data-scroll="1">
                 <nav class="iq-sidebar-menu">
                     <ul id="iq-sidebar-toggle" class="side-menu">
-                        <li class="active sidebar-layout">
-                            <a href="{{url('/')}}" class="svg-icon">
+                        <li class="@yield('dash-title') sidebar-layout">
+                            <a href="{{url('/admin-dashboard')}}" class="svg-icon">
                                 <i class="">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
@@ -64,7 +64,8 @@
                                 </svg>
                             </a>
                             <ul id="app3" class="submenu collapse" data-parent="#iq-sidebar-toggle">
-                                <li class="sidebar-layout">
+<!--
+                                <li class="@yield('add-goal') sidebar-layout">
                                     <a href="{{url('add-category')}}" class="collapsed svg-icon">
                                         <i class="">
                                             <svg class="svg-icon" width="18" id="iq-form-1-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -73,6 +74,9 @@
                                         </i>
                                         <span class="">Add Goals</span>
                                     </a>
+                                </li>
+-->
+                                <li class="@yield('view-goal') sidebar-layout">
                                     <a href="{{url('view-category')}}" class="collapsed svg-icon">
                                         <i class="">
                                             <svg class="svg-icon" width="18" id="iq-form-1-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -81,7 +85,6 @@
                                         </i>
                                         <span class="">View Goals</span>
                                     </a>
-
                                 </li>
                             </ul>
                         </li>
@@ -98,7 +101,7 @@
                                 </svg>
                             </a>
                             <ul id="app4" class="submenu collapse" data-parent="#iq-sidebar-toggle">
-                                <li class="sidebar-layout">
+                                <li class="@yield('add-org') sidebar-layout">
                                     <a href="{{url('add-organization')}}" class="collapsed svg-icon">
                                         <i class="">
                                             <svg class="svg-icon" width="18" id="iq-form-1-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -107,6 +110,8 @@
                                         </i>
                                         <span class="">Add Organizations</span>
                                     </a>
+                                </li>
+                                <li class="@yield('view-org') sidebar-layout">
                                     <a href="{{url('view-organization')}}" class="collapsed svg-icon">
                                         <i class="">
                                             <svg class="svg-icon" width="18" id="iq-form-1-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -115,9 +120,64 @@
                                         </i>
                                         <span class="">View Organizations</span>
                                     </a>
+                                </li>
 
+                            </ul>
+                        </li>
+                        <li class="sidebar-layout">
+                            <a href="#app5" class="collapsed svg-icon" data-toggle="collapse" aria-expanded="false">
+                                <i>
+                                    <svg class="svg-icon" id="iq-form-1" width="18" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" style="stroke-dasharray: 74, 94; stroke-dashoffset: 0;"></path>
+                                    </svg>
+                                </i>
+                                <span class="ml-2">User List</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="svg-icon iq-arrow-right arrow-active" width="15" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                </svg>
+                            </a>
+                            <ul id="app5" class="submenu collapse" data-parent="#iq-sidebar-toggle">
+                                <li class="@yield('admin-list') sidebar-layout">
+                                    <a href="{{url('admin-list')}}" class="collapsed svg-icon">
+                                        <i class="">
+                                            <svg class="svg-icon" width="18" id="iq-form-1-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" style="stroke-dasharray: 61, 81; stroke-dashoffset: 0;"></path>
+                                            </svg>
+                                        </i>
+                                        <span class="">Admin List</span>
+                                    </a>
+                                </li>
+                                <li class="@yield('emp-list') sidebar-layout">
+                                    <a href="{{url('employer-list')}}" class="collapsed svg-icon">
+                                        <i class="">
+                                            <svg class="svg-icon" width="18" id="iq-form-1-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" style="stroke-dasharray: 61, 81; stroke-dashoffset: 0;"></path>
+                                            </svg>
+                                        </i>
+                                        <span class="">Employee List</span>
+                                    </a>
+                                </li>
+                                <li class="@yield('can-list') sidebar-layout">
+                                    <a href="{{url('candidate-list')}}" class="collapsed svg-icon">
+                                        <i class="">
+                                            <svg class="svg-icon" width="18" id="iq-form-1-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" style="stroke-dasharray: 61, 81; stroke-dashoffset: 0;"></path>
+                                            </svg>
+                                        </i>
+                                        <span class="">Candidate List</span>
+                                    </a>
                                 </li>
                             </ul>
+                        </li>
+                        <li class="@yield('posted-title') sidebar-layout">
+                            <a href="{{url('/user-posted-orgs')}}" class="svg-icon">
+                                <i class="">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                                    </svg>
+                                </i>
+                                <span class="ml-2">Posted Organizations</span>
+                            </a>
                         </li>
                     </ul>
                 </nav>
